@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('admin.adminmain');
 });
 
+// hello
 Route::get('/addfaculty', [FacultyController::class, 'create']);
 Route::post('/addfacultydata', [FacultyController::class, 'store']);
 
