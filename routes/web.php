@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+// require __DIR__ . '\visitor.php';
+
+
+Route::get('/visitor', function () {
+    return view('visitor.visitormain');
+});
+
+require __DIR__ . '\admin.php';
