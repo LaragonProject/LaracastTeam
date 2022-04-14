@@ -43,7 +43,13 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+
+            'subjectname' => 'required',
+            'subjectcode' => 'required',
+            'selectfaculty' => 'required',
+            
+        ]);
     }
 
     /**
