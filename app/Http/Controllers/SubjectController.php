@@ -6,15 +6,6 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-
-    function getData(Request $req)
-    {
-        $req->validate([
-            'subjectname' => 'required'
-        ]);
-        return $req->input();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +13,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.addsubjectform');
+        // return view('admin.addsubjectform');
     }
 
     /**
@@ -32,7 +23,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.addsubjectform');
     }
 
     /**
@@ -43,6 +34,7 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
+       
         $validated = $request->validate([
 
             'subjectname' => 'required',

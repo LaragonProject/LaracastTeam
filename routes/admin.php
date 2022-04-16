@@ -29,4 +29,5 @@ Route::get('/addstudent', [StudentController::class, 'create']);
 Route::post('/addstudentdata', [StudentController::class, 'store']);
 
 
-Route::get('/addsubject', [SubjectController::class, 'index']);
+Route::get('/addsubject', [SubjectController::class, 'create']);
+Route::post('/addsubjectdata', [SubjectController::class, 'store']);
