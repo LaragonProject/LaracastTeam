@@ -25,6 +25,7 @@ Route::get('/visitor', function () {
 });
 
 require __DIR__ . '\admin.php';
+require __DIR__ . '\user.php';
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
