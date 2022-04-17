@@ -42,6 +42,7 @@
                     <label>Forms & table</label>
                 </li>
                 <!-- ====================================================================== -->
+                @can('isAdmin')
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addfaculty')}}" class="nav-link "><span class="pcoded-micon"><i
@@ -56,14 +57,22 @@
                             Student</span></a>
                 </li>
 
-
+                
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addsubject')}}" class="nav-link "><span class="pcoded-micon"><i
                                 class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add
                             Subject</span></a>
                 </li>
-
+                @endcan
+                @can('isFaculty')
+                <li data-username="form elements advance componant validation masking wizard picker select"
+                    class="nav-item">
+                    <a href="#" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">
+                            Add Mark</span></a>
+                </li>
+                @endcan
                 <!-- ======================================================================= -->
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">

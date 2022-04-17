@@ -31,17 +31,33 @@
           </ul>
         </div>
         <div class="quote_btn-container">
-          <a href="">
+        @if(Route::has('login'))
+
+           @auth 
+
+          
+           <x-app-layout>
+                             <!-- user logged -->
+           </x-app-layout>
+           @else
+          <a href="{{route('login')}}">
+            
             <span>
               Login
             </span>
             <i class="fa fa-user" aria-hidden="true"></i>
           </a>
-          {{-- <form class="form-inline">
-            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form> --}}
+
+          <a href="{{route('register')}}">
+            
+            <span>
+            Register
+            </span>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </a>
+          @endauth
+            @endif
+          
         </div>
       </div>
     </nav>
