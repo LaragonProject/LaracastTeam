@@ -46,6 +46,18 @@ class FacultyController extends Controller
             'qualifications' => 'required',
             'specialization' => 'required',
         ]);
+
+        $query =DB::table('faculty')->insert([
+            'email'->$_request->input('email'),
+            'password'->$_request->input('password'),
+            'experience'->$_request->input('experience'),
+            'dob'->$_request->input('dob'),
+            'fullname'->$_request->input('fullname'),
+            'department'->$_request->input('department'),
+            'qualifications'->$_request->input('qualifications'),
+            'specialization'->$_request->input('specialization'),
+            
+        ])
     }
 
     /**

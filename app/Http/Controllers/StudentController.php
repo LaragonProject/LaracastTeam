@@ -44,6 +44,7 @@ class StudentController extends Controller
             'department' => 'required',
             'semester' => 'required',
             'rollnumber' => 'required | numeric | max:2',
+            
         ]);
     }
 
@@ -91,4 +92,5 @@ class StudentController extends Controller
     {
         //
     }
+    
 }
