@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('password');
+            $table->bigInteger('user_id')->unsigned();
             $table->date('dob');
             $table->string('experience');
-            $table->string('fullname');
             $table->string('department');
             $table->string('qualifications');
             $table->string('specialization');
+            
+            $table->foreign('user_id')->references('id')->on('users');
+            //$table->string('email');
+            // $table->string('password');
+            // $table->string('fullname');
             $table->timestamps();
         });
     }

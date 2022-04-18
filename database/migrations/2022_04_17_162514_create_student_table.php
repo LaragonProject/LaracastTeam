@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('student', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->integer('enrollmentnumber');
             $table->string('semester');
-            $table->string('email');
-            $table->string('password');
             $table->integer('rollnumber');
             $table->string('division');
-            $table->string('studentname');
             $table->string('department');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            // $table->string('studentname');
+            // $table->string('email');
+            // $table->string('password');
             $table->timestamps();
             
         });
