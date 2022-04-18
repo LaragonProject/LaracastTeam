@@ -47,19 +47,27 @@ class FacultyController extends Controller
             'specialization' => 'required',
         ]);
 
-        $query =DB::table('faculty')->insert([
-            'email'->$_request->input('email'),
-            'password'->$_request->input('password'),
-            'experience'->$_request->input('experience'),
-            'dob'->$_request->input('dob'),
-            'fullname'->$_request->input('fullname'),
-            'department'->$_request->input('department'),
-            'qualifications'->$_request->input('qualifications'),
-            'specialization'->$_request->input('specialization'),
-            
-        ])
-    }
+        $query = DB::table('faculty')->insert([
+            'email'=>$_request->input('email'),
+            'password'=>$_request->input('password'),
+            'experience'=>$_request->input('experience'),
+            'dob'=>$_request->input('dob'),
+            'fullname'=>$_request->input('fullname'),
+            'department'=>$_request->input('department'),
+            'qualifications'=>$_request->input('qualifications'),
+            'specialization'=>$_request->input('specialization'),
+        ]);
 
+
+        if($query){
+
+            return back()->with('success','Data have been successfuly inserted');
+        }
+        else{
+            return back()->with('fail','Something went wrong');
+        }
+    
+    }
     /**
      * Display the specified resource.
      *
