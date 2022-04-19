@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Fac;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 class FacultyController extends Controller
 {
     /**
@@ -35,28 +38,50 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
+        // $validated = $request->validate([
 
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|max:15',
-            'experience' => 'required|numeric|min:2',
-            'dob' => 'required',
-            'fullname' => 'required',
-            'department' => 'required',
-            'qualifications' => 'required',
-            'specialization' => 'required',
-        ]);
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|min:8|max:15',
+        //     'experience' => 'required|numeric|min:2',
+        //     'dob' => 'required',
+        //     'fullname' => 'required',
+        //     'department' => 'required',
+        //     'qualifications' => 'required',
+        //     'specialization' => 'required',
+        // ]);
 
-        $query = DB::table('faculty')->insert([
-            'email'=>$_request->input('email'),
-            'password'=>$_request->input('password'),
-            'experience'=>$_request->input('experience'),
-            'dob'=>$_request->input('dob'),
-            'fullname'=>$_request->input('fullname'),
-            'department'=>$_request->input('department'),
-            'qualifications'=>$_request->input('qualifications'),
-            'specialization'=>$_request->input('specialization'),
-        ]);
+        $user =new User;
+        $fclty = new Fac;
+        $user->name =$request->fullname;
+        $user->email =$request->email;
+        $user->password =Hash::make($request->password);
+        $user->user_type = 'Faculty';
+        
+        $user->save();
+
+        $id = $user->id;
+        //dd($id);
+        $fclty->user_id=$id;
+        $fclty->dob =$request->dob;
+        $fclty->experience =$request->experience;
+        $fclty->department =$request->department;
+        $fclty->qualifications =$request->qualifications;
+        $fclty->specialization =$request->specialization;
+        
+        $fclty->save();
+      
+        return redirect()->back()->with('success','created successfully');
+
+        // $query = DB::table('faculty')->insert([
+        //     'email'=>$_request->input('email'),
+        //     'password'=>$_request->input('password'),
+        //     'experience'=>$_request->input('experience'),
+        //     'dob'=>$_request->input('dob'),
+        //     'fullname'=>$_request->input('fullname'),
+        //     'department'=>$_request->input('department'),
+        //     'qualifications'=>$_request->input('qualifications'),
+        //     'specialization'=>$_request->input('specialization'),
+        // ]);
 
 
         if($query){
@@ -74,9 +99,18 @@ class FacultyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
+        $faculty = DB::table('users')
+    ->select('users.name','users.email','faculty.id','faculty.dob','faculty.experience','faculty.department','faculty.qualifications','faculty.specialization')
+    ->join('faculty', 'faculty.user_id', '=', 'users.id')
+   
+    ->get();
+    //    dd($leagues);
+    //    $user=User::select('name','email')->get();
+    //    $faculty=Fac::select('id','dob','experience','department','qualifications','specialization')->where('user_id',$user->id)->get();
+       return view('admin.showfaculty',compact('faculty'));
     }
 
     /**

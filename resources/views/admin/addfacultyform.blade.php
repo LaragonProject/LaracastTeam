@@ -145,8 +145,8 @@
                                                                 <select class="form-control"
                                                                     id="exampleFormControlSelect1" name='department'>
                                                                     <option>Select Department</option>
-                                                                    <option>MCA</option>
-                                                                    <option>IMCA</option>
+                                                                    <option value="mca">MCA</option>
+                                                                    <option value="imca">IMCA</option>
                                                                 </select>
                                                                 @error('department')
                                                                 <p style="color:red; margin-top: 2px;" class="error">

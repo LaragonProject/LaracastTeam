@@ -23,6 +23,7 @@ Route::get('/admin', function () {
 // hello
 Route::get('/addfaculty', [FacultyController::class, 'create']);
 Route::post('/addfacultydata', [FacultyController::class, 'store']);
+Route::get('/showfacultydata', [FacultyController::class, 'show']);
 
 
 Route::get('/addstudent', [StudentController::class, 'create']);
