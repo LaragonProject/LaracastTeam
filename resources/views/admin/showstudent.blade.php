@@ -15,7 +15,7 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>Show Faculty Data</h2>
+<h2>Show Student Data</h2>
 <br/>
 </div>
 <div class="pull-right mb-2">
@@ -39,36 +39,35 @@
 <th width="100" style="text-align:center">Name</th>
 <th width="150" style="text-align:center">Email</th>
 <!-- <th>user type</th> -->
-<th width="100" style="text-align:center">DOB</th>
-<th width="50" style="text-align:center">Experience</th>
+<th width="100" style="text-align:center">EnrollmentNumber</th>
+<th width="50" style="text-align:center">Semester</th>
+<th width="50" style="text-align:center">RollNumber</th>
+<th width="50" style="text-align:center">Division</th>
 <th width="50" style="text-align:center">Department</th>
-<th width="50" style="text-align:center">Qualifications</th>
-<th width="50" style="text-align:center">Specialization</th>
 <th width="50" style="text-align:center">Action</th>
 	
 
 
 </tr>
-@if(!empty($faculty))
-@foreach ($faculty as $f)
+
+@foreach ($student as $s)
 
 
 <tr>
-<td>{{ $f->id }}</td>
-    <td>{{ $f->name }}</td>
-    <td>{{ $f->email }}</td>
+<td>{{ $s->id }}</td>
+    <td>{{ $s->name }}</td>
+    <td>{{ $s->email }}</td>
 
-    <td>{{ $f->dob }}</td>
-    <td>{{ $f->experience }}</td>
-    <td>{{ $f->department }}</td>
-    <td>{{ $f->qualifications }}</td>
-    <td>{{ $f->specialization }}</td>
-    <td><a class="btn btn-small btn-success" href="{{ URL::to('edit/' . $f->id ) }}">Edit </a> 
-    <a class="btn btn-small btn-danger" href="{{ URL::to('delete/' . $f->id ) }}">Delete</a></td>
+    <td>{{ $s->enrollmentnumber }}</td>
+    <td>{{ $s->semester }}</td>
+    <td>{{ $s->rollnumber }}</td>
+    <td>{{ $s->division }}</td>
+    <td>{{ $s->department }}</td>
+    <td><a class="btn btn-small btn-success" href="{{ URL::to('edit/' . $s->id ) }}">Edit </a> 
+    <a class="btn btn-small btn-danger" href="{{ URL::to('delete/' . $s->id ) }}">Delete</a></td>
     </tr>
 
 @endforeach
-@endif
 </table>
 </body>
 </html>

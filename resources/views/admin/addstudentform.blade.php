@@ -56,6 +56,17 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
+                                                    @if(Session::get('success'))
+                                                    <div class="alert alert-success">
+                                                        {{ Session::get('success')}}
+                                                    </div>
+                                                    @endif
+
+                                                    @if(Session::get('fail'))
+                                                    <div class="alert alert-danger">
+                                                        {{ Session::get('fail')}}
+                                                    </div>
+                                                    @endif
                                                         <form action="/addstudentdata" method="post">
                                                             @csrf
                                                             <div class="form-group">
@@ -77,12 +88,12 @@
                                                                 <select class="form-control"
                                                                     id="exampleFormControlSelect1" name="semester">
                                                                     <option>Select Semester</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
+                                                                    <option value="1" >1</option>
+                                                                    <option value="2" >2</option>
+                                                                    <option value="3" >3</option>
+                                                                    <option value="4" >4</option>
+                                                                    <option value="5" >5</option>
+                                                                    <option value="6" >6</option>
                                                                 </select>
 
                                                                 @error('division')
@@ -113,12 +124,11 @@
                                                                 </p>
                                                                 @enderror
                                                             </div>
-                                                            <button type="submit"
-                                                                class="btn btn-primary">Submit</button>
-                                                        </form>
+                                                            
+                                                       
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <form>
+                                                        
                                                             <div class="form-group">
                                                                 <label>Enter Roll Number</label>
                                                                 <input type="text" class="form-control"
@@ -135,11 +145,11 @@
                                                                 <select class="form-control"
                                                                     id="exampleFormControlSelect1" name="division">
                                                                     <option>Select Division</option>
-                                                                    <option>A</option>
-                                                                    <option>B</option>
-                                                                    <option>C</option>
-                                                                    <option>D</option>
-                                                                    <option>E</option>
+                                                                    <option value="A">A</option>
+                                                                    <option value="B">B</option>
+                                                                    <option value="C">C</option>
+                                                                    <option value="D">D</option>
+                                                                    <option value="E">E</option>
                                                                 </select>
                                                                 @error('division')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
@@ -163,8 +173,8 @@
                                                                 <select class="form-control"
                                                                     id="exampleFormControlSelect1" name="department">
                                                                     <option>Select Department</option>
-                                                                    <option>MCA</option>
-                                                                    <option>IMCA</option>
+                                                                    <option value="mca">MCA</option>
+                                                                    <option value="imca">IMCA</option>
                                                                 </select>
                                                                 @error('department')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
@@ -172,7 +182,9 @@
                                                                 </p>
                                                                 @enderror
                                                             </div>
-
+</br>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
                                                         </form>
                                                     </div>
                                                 </div>

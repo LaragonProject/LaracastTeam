@@ -1,81 +1,71 @@
-@include('admin.headtagcode')
-@include('admin.sidebar')
-@include('admin.navbar')
 
-<body>
-    <!DOCTYPE html>
-    <html lang="en">
+<html>
 
-    <head>
-        <title>Datta Able Free Bootstrap 4 Admin Template</title>
+<head>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description"
-            content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-        <meta name="keywords"
-            content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
-        <meta name="author" content="CodedThemes" />
+    
+    <title>LJ University</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Free Datta Able Admin Template come up with latest Bootstrap 4 framework with basic components, form elements and lots of pre-made layout options" />
+    <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template"/>
+    <meta name="author" content="CodedThemes"/>
 
-        <!-- Favicon icon -->
-        <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-        <!-- fontawesome icon -->
-        <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
-        <!-- animation css -->
-        <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
-        <!-- vendor css -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        
 
+<!-- Favicon icon -->
+<link rel="icon" href="admin/assets/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="admin/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="admin/assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="admin/assets/css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+
+    <style>
+
+form{
+
+margin-left:500px;
+margin-right:500px;
+margin-top:20px;
+
+}
+
+    </style>
     </head>
-
-    <body>
-        <!-- [ Pre-loader ] start -->
-        <div class="loader-bg">
-            <div class="loader-track">
-                <div class="loader-fill"></div>
-            </div>
-        </div>
-        <!-- [ Pre-loader ] End -->
-
-
-        <!-- [ Main Content ] start -->
-        <div class="pcoded-main-container">
-            <div class="pcoded-wrapper">
-                <div class="pcoded-content">
-                    <div class="pcoded-inner-content">
-                        <div class="main-body">
-                            <div class="page-wrapper">
-                                <!-- [ Main Content ] start -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card">
-
-                                            <div class="card-body">
-                                                <h5>Enter Faculty Details</h5>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-
-                                                    @if(Session::get('success'))
-                                                    <div class="alert alert-success">
-                                                        {{ Session::get('success')}}
-                                                    </div>
-                                                    @endif
-
-                                                    @if(Session::get('fail'))
-                                                    <div class="alert alert-danger">
-                                                        {{ Session::get('fail')}}
-                                                    </div>
-                                                    @endif
-                                                        <form action="/addfacultydata" method="post">
+    <body>                                              
+                                                 
+                                                    @if(!empty($faculty))
+                                                            @foreach($faculty as $facultys)
+                                                           
+                                                        <form class="manage" action="{{url('/update',$facultys->id)}}" method="post" >
                                                             @csrf
+
+                                                            @method('PATCH')
+                                                            <br> <h2>Edit Faculty Data</h2> <br>
+                                                           
                                                             
+                                                                <input type="hidden" class="form-control"
+                                                                    id="exampleInputEmail1" name="user_id" value="{{ $facultys->user_id }}"
+                                                                    aria-describedby="emailHelp"
+                                                                    placeholder="Enter email">
+                                                                
 
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Email address</label>
                                                                 <input type="email" class="form-control"
-                                                                    id="exampleInputEmail1" name="email"
+                                                                    id="exampleInputEmail1" name="email" value="{{ $facultys->email }}"
                                                                     aria-describedby="emailHelp"
                                                                     placeholder="Enter email">
                                                                 @error('email')
@@ -90,6 +80,7 @@
                                                                 <label for="exampleInputPassword1">Password</label>
                                                                 <input type="password" class="form-control"
                                                                     id="exampleInputPassword1" name="password"
+                                                                    value="{{ $facultys->password }}"
                                                                     placeholder="Password">
                                                                 @error('password')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
@@ -103,7 +94,7 @@
                                                                 <label for="exampleInputPassword1">Date Of Birth</label>
                                                                 <input type="date" class="form-control"
                                                                     id="exampleInputPassword1" name="dob"
-                                                                    placeholder="Enter Date of Birth">
+                                                                    placeholder="Enter Date of Birth" value="{{$facultys->dob }}">
                                                                 @error('dob')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
                                                                     {{$message}}
@@ -118,7 +109,7 @@
                                                                 <label for="exampleInputPassword1">Experience</label>
                                                                 <input type="text" class="form-control"
                                                                     id="exampleInputPassword1" name="experience"
-                                                                    placeholder="Enter Your Experience">
+                                                                    placeholder="Enter Your Experience" value="{{$facultys->experience }}">
                                                                 @error('experience')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
                                                                     {{$message}}
@@ -132,7 +123,7 @@
                                                             <div class="form-group">
                                                                 <label>Your Full Name</label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="Enter Your Name" name="fullname">
+                                                                    placeholder="Enter Your Name" name="fullname" value="{{$facultys->name }}">
                                                                 @error('fullname')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
                                                                     {{$message}}
@@ -144,22 +135,21 @@
                                                                     Department</label>
                                                                 <select class="form-control"
                                                                     id="exampleFormControlSelect1" name='department'>
-                                                                    <option >Select Department</option>
-                                                                    <option value="mca">MCA</option>
-                                                                    <option value="imca">IMCA</option>
+                                                                    
+                                                                    <option value="{{$facultys->department }}">{{$facultys->department }}</option>
+                                                                    <option value="imca">MCA</option>
                                                                 </select>
-                                                                
-                                                            </div>
-                                                            @error('department')
+                                                                @error('department')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
                                                                     {{$message}}
                                                                 </p>
                                                                 @enderror
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label>Qualifications</label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Enter Your Qualifications"
-                                                                    name="qualifications">
+                                                                    name="qualifications" value="{{$facultys->qualifications }}">
 
                                                                 @error('qualifications')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
@@ -171,7 +161,7 @@
                                                                 <label>Specialization</label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Enter Your Specialization"
-                                                                    name="specialization">
+                                                                    name="specialization" value="{{$facultys->specialization }}">
 
                                                                 @error('specialization')
                                                                 <p style="color:red; margin-top: 2px;" class="error">
@@ -180,34 +170,10 @@
                                                                 @enderror
                                                             </div>
                                                             <button type="submit"
-                                                                class="btn btn-primary">Submit</button>
+                                                                class="btn btn-primary">Update</button>
+                                                            @endforeach
+                                                            @endif
                                                         </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- [ Main Content ] end -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <!-- Warning Section Ends -->
-
-        <!-- Required Js -->
-        <script src="assets/js/vendor-all.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/pcoded.min.js"></script>
-
+   
     </body>
-
     </html>
-
-    @include('admin.js')
-</body>
-
-</html>

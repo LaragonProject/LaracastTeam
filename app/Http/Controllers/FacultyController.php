@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 class FacultyController extends Controller
 {
+  
     /**
      * Display a listing of the resource.
      *
@@ -38,17 +39,17 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
 
-        // $validated = $request->validate([
+        $validated = $request->validate([
 
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:8|max:15',
-        //     'experience' => 'required|numeric|min:2',
-        //     'dob' => 'required',
-        //     'fullname' => 'required',
-        //     'department' => 'required',
-        //     'qualifications' => 'required',
-        //     'specialization' => 'required',
-        // ]);
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|max:15',
+            'experience' => 'required|numeric|min:2',
+            'dob' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'qualifications' => 'required',
+            'specialization' => 'required',
+        ]);
 
         $user =new User;
         $fclty = new Fac;
@@ -107,9 +108,7 @@ class FacultyController extends Controller
     ->join('faculty', 'faculty.user_id', '=', 'users.id')
    
     ->get();
-    //    dd($leagues);
-    //    $user=User::select('name','email')->get();
-    //    $faculty=Fac::select('id','dob','experience','department','qualifications','specialization')->where('user_id',$user->id)->get();
+    
        return view('admin.showfaculty',compact('faculty'));
     }
 
@@ -121,7 +120,12 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $faculty = DB::table('users')
+        ->select('users.name','users.email','faculty.user_id','users.password','faculty.id','faculty.dob','faculty.experience','faculty.department','faculty.qualifications','faculty.specialization')
+        ->join('faculty', 'faculty.user_id', '=', 'users.id')->where('faculty.id',$id)->get();
+      
+        return view('admin.editfaculty',compact('faculty'));
     }
 
     /**
@@ -133,7 +137,25 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+           
+        $validated = $request->validate([
+
+            'email' => 'required|email|unique:users',
+            //'password' => 'required|min:8|max:15',
+            'experience' => 'required|numeric|min:2',
+            'dob' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'qualifications' => 'required',
+            'specialization' => 'required',
+        ]);
+
+
+        User::where('id',$request->user_id)->update(['name'=>$request->fullname,'email'=>$request->email,'password'=>$request->password]);
+        Fac::where('id',$id)->update(['dob'=>$request->dob,'experience'=>$request->experience,'department'=>$request->department,'qualifications'=>$request->qualifications,'specialization'=>$request->specialization]);
+        
+
+         return redirect()->route('showme');
     }
 
     /**
@@ -144,6 +166,14 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+       $user_id = Fac::select('user_id')->where('id',$id)->get();
+    //    define($user_idd = '$user_id');
+       $fac = Fac::find($id);
+       $user =User::whereIn('id',$user_id)->first();
+       $fac->delete();
+       $user->delete();
+     
+       return redirect()->route('showme');
     }
 }
