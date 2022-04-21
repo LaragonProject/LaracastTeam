@@ -40,18 +40,18 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
-        // $validated = $request->validate([
+        $validated = $request->validate([
 
-        //     'enrollmentnumber' => 'required | numeric | max:16',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:8|max:15',
-        //     'division' => 'required',
-        //     'fullname' => 'required',
-        //     'department' => 'required',
-        //     'semester' => 'required',
-        //     'rollnumber' => 'required | numeric | max:2',
+            'enrollmentnumber' => 'required | numeric ',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4|max:15',
+            'division' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'semester' => 'required',
+            'rollnumber' => 'required | numeric ',
             
-        // ]);
+        ]);
 
          
         $user =new User;
@@ -113,7 +113,14 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        // return view('admin.editstudent');
+       // dd("hekk");
+        $student = DB::table('users')
+        ->select('users.name','users.email','student.user_id','users.password','student.id','student.enrollmentnumber','student.semester','student.rollnumber','student.division','student.department')
+        ->join('student', 'student.user_id', '=', 'users.id')->where('student.id',$id)->get();
+      //dd($student);
+        return view('admin.editstudent',compact('student'));
     }
 
     /**
@@ -125,7 +132,25 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validated = $request->validate([
+
+            'enrollmentnumber' => 'required | numeric ',
+            'email' => 'required|email|unique:users',
+            //'password' => 'required|min:4|max:15',
+            'division' => 'required',
+            'fullname' => 'required',
+            'department' => 'required',
+            'semester' => 'required',
+            'rollnumber' => 'required | numeric ',
+            
+        ]);
+        
+        User::where('id',$request->user_id)->update(['name'=>$request->fullname,'email'=>$request->email,'password'=>$request->password]);
+        Stu::where('id',$id)->update(['enrollmentnumber'=>$request->enrollmentnumber,'semester'=>$request->semester,'rollnumber'=>$request->rollnumber,'division'=>$request->division,'department'=>$request->department]);
+        
+
+         return redirect()->route('showmee');
     }
 
     /**
@@ -136,7 +161,15 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user_id = Stu::select('user_id')->where('id',$id)->get();
+        
+    //    define($user_idd = '$user_id');
+       $stu = Stu::find($id);
+       $user =User::whereIn('id',$user_id)->first();
+       $stu->delete();
+       $user->delete();
+     
+       return redirect()->route('showmee');
     }
     
 }

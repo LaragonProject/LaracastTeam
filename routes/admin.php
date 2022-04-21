@@ -35,7 +35,10 @@ Route::match(['get', 'post'],'/delete/{id}', [FacultyController::class, 'destroy
 Route::get('/addstudent', [StudentController::class, 'create']);
 Route::post('/addstudentdata', [StudentController::class, 'store']);
 Route::get('/showstudent', [StudentController::class, 'show']);
-Route::get('/showstudentdata', [StudentController::class, 'show']);
+Route::get('/showstudentdata', [StudentController::class, 'show'])->name('showmee');
+Route::get('/editt/{id}', [StudentController::class, 'edit']);
+ Route::patch('/updatee/{id}', [StudentController::class, 'update']);
+ Route::match(['get', 'post'],'/deletee/{id}', [StudentController::class, 'destroy']);
 
 
 

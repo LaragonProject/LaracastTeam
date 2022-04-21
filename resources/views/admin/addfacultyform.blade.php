@@ -27,6 +27,13 @@
         <!-- vendor css -->
         <link rel="stylesheet" href="assets/css/style.css">
 
+            <style>
+                label{
+
+                    font-size:20px
+                   
+                }
+            </style>
     </head>
 
     <body>
@@ -52,7 +59,7 @@
                                         <div class="card">
 
                                             <div class="card-body">
-                                                <h5>Enter Faculty Details</h5>
+                                                <h5 style="font-size:30px;">Enter Faculty Details</h5>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -180,7 +187,7 @@
                                                                 @enderror
                                                             </div>
                                                             <button type="submit"
-                                                                class="btn btn-primary">Submit</button>
+                                                                 style="background-color: black;"class="btn btn-primary">Submit</button>
                                                         </form>
                                                     </div>
                                                 </div>

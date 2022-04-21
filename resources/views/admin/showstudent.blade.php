@@ -49,7 +49,7 @@
 
 
 </tr>
-
+@if(!empty($student))
 @foreach ($student as $s)
 
 
@@ -63,11 +63,12 @@
     <td>{{ $s->rollnumber }}</td>
     <td>{{ $s->division }}</td>
     <td>{{ $s->department }}</td>
-    <td><a class="btn btn-small btn-success" href="{{ URL::to('edit/' . $s->id ) }}">Edit </a> 
-    <a class="btn btn-small btn-danger" href="{{ URL::to('delete/' . $s->id ) }}">Delete</a></td>
+    <td><a class="btn btn-small btn-success" href="{{ URL::to('editt/' . $s->id ) }}">Edit </a> 
+    <a class="btn btn-small btn-danger" href="{{ URL::to('deletee/' . $s->id ) }}">Delete</a></td>
     </tr>
 
 @endforeach
+@endif
 </table>
 </body>
 </html>
