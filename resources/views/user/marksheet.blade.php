@@ -50,6 +50,8 @@
         <th width="150" style="text-align:center" scope="col">RDBMS</th>
         <th width="150" style="text-align:center" scope="col">INTERNAL MARK</th>
         <th width="150" style="text-align:center" scope="col">EXTERNAL MARK</th>
+        <th width="150" style="text-align:center" scope="col">Total</th>
+
       </tr>
     </thead>
     <tbody>
@@ -62,6 +64,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">120</td>
+
       </tr>
       <tr>
         <th style="text-align:center" scope="row">2</th>
@@ -72,6 +76,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">150</td>
+        
       </tr>
       <tr>
         <th style="text-align:center" scope="row">2</th>
@@ -82,6 +88,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">880</td>
+
       </tr>
       <tr>
         <th style="text-align:center" scope="row">3</th>
@@ -92,6 +100,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">140</td>
+
       </tr>
       <tr>
         <th style="text-align:center" scope="row">4</th>
@@ -102,6 +112,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">150</td>
+
       </tr>
       <tr>
         <th style="text-align:center" scope="row">5</th>
@@ -112,6 +124,8 @@
         <td style="text-align:center">55</td>
         <td style="text-align:center">65</td>
         <td style="text-align:center">58</td>
+        <td style="text-align:center">150</td>
+
       </tr>
     </tbody>
   </table>

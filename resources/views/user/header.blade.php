@@ -16,10 +16,12 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{url('homepage')}}">Home <span class="sr-only">(current)</span></a>
             </li>
+            @if(Auth::user())
             <li class="nav-item">
               <a class="nav-link" href="{{url('showmarksheet')}}">Student Mark</a>
             </li>
-            {{-- <li class="nav-item">
+            @endif
+            <!-- <li class="nav-item">
               <a class="nav-link" href="course.html">Courses</a>
             </li>
             <li class="nav-item">
@@ -27,7 +29,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact Us</a>
-            </li> --}}
+            </li>  -->
           </ul>
         </div>
         <div class="quote_btn-container">
@@ -48,13 +50,13 @@
             <i class="fa fa-user" aria-hidden="true"></i>
           </a>
 
-          <a href="{{route('register')}}">
+          <!-- <a href="{{route('register')}}">
             
             <span>
             Register
             </span>
             <i class="fa fa-user" aria-hidden="true"></i>
-          </a>
+          </a> -->
           @endauth
             @endif
           
