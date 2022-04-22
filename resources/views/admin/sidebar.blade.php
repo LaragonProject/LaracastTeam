@@ -43,6 +43,7 @@
                 </li>
                 <!-- ====================================================================== -->
                 @can('isAdmin')
+
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addfaculty')}}" class="nav-link "><span class="pcoded-micon"><i
@@ -57,7 +58,7 @@
                             Student</span></a>
                 </li>
 
-                
+
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addsubject')}}" class="nav-link "><span class="pcoded-micon"><i
