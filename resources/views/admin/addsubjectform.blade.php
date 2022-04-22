@@ -57,13 +57,18 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <form>
+                                                        <form action="/addsubjectdata" method="post">
+                                                            @csrf
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Subject Name</label>
                                                                 <input type="email" class="form-control"
                                                                     id="exampleInputEmail1" aria-describedby="emailHelp"
                                                                     placeholder="Enter Name of Subject">
-
+                                                                    @error('subjectname')
+                                                                <p style="color:red; margin-top: 2px;" class="error">
+                                                                    {{$message}}
+                                                                </p>
+                                                                @enderror
                                                             </div>
 
                                                             <div class="form-group">
@@ -76,23 +81,29 @@
                                                                     <option>Faculty 2</option>
                                                                     <option>Faculty 3</option>
                                                                 </select>
+                                                                 @error('selectfaculty')
+                                                                <p style="color:red; margin-top: 2px;" class="error">
+                                                                    {{$message}}
+                                                                </p>
+                                                                @enderror
                                                             </div>
 
-                                                            <button type="submit"
-                                                                class="btn btn-primary">Submit</button>
-
-                                                        </form>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <form>
                                                             <div class="form-group">
                                                                 <label>Subject Code</label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Enter Subject Code">
+                                                                    @error('subjectcode')
+                                                                <p style="color:red; margin-top: 2px;" class="error">
+                                                                    {{$message}}
+                                                                </p>
+                                                                @enderror
                                                             </div>
+                                                            <button type="submit"
+                                                            style="background-color: black;" class="btn btn-primary">Submit</button>
 
                                                         </form>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
