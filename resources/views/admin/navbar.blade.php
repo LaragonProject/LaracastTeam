@@ -10,9 +10,9 @@
             <i class="feather icon-more-horizontal"></i>
         </a>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
-                <li class="nav-item dropdown">
+            <!-- <ul class="navbar-nav mr-auto">
+                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li> -->
+                <!-- <li class="nav-item dropdown">
                     <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown">Dropdown</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="javascript:">Action</a></li>
@@ -33,8 +33,8 @@
                         </div>
                     </div>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
+             </ul> -->
+            <!-- <ul class="navbar-nav ml-auto">
                 <li>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown"><i class="icon feather icon-bell"></i></a>
@@ -80,14 +80,14 @@
                                         </div>
                                     </div>
                                 </li>
-                            </ul>
-                            <div class="noti-footer">
+                            </ul> -->
+                            <!-- <div class="noti-footer">
                                 <a href="javascript:">show all</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                </li>
-                <li>
+                <!-- </li> -->
+                <!-- <li> -->
                     <div class="dropdown drp-user">
                         
                         <x-app-layout>
