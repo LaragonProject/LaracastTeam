@@ -1,8 +1,8 @@
 <nav class="pcoded-navbar">
     <div class="navbar-wrapper">
         <div class="navbar-brand header-logo">
-            <a href="#" class="b-brand"> 
-                
+            <a href="#" class="b-brand">
+
 
                 <span class="b-title" STYLE="font-size:120%">LJ University</span>
             </a>
@@ -10,9 +10,9 @@
         </div>
         <div class="navbar-content scroll-div">
             <ul class="nav pcoded-inner-navbar">
-                
-               
-               
+
+
+
                 @can('isAdmin')
 
                 <li data-username="form elements advance componant validation masking wizard picker select"
@@ -21,7 +21,7 @@
                                 class="feather icon-file-text"></i></span><span class="pcoded-mtext">Add
                             Faculty</span></a>
                 </li>
-                
+
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addstudent')}}" class="nav-link "><span class="pcoded-micon"><i
@@ -29,26 +29,6 @@
                             Student</span></a>
                 </li>
 
-<<<<<<< HEAD
-
-=======
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item">
-                    <a href="{{url('/showfaculty')}}" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Show 
-                            Faculty</span></a>
-                </li>
-
-                <li data-username="form elements advance componant validation masking wizard picker select"
-                    class="nav-item">
-                    <a href="{{url('/showstudent')}}" class="nav-link "><span class="pcoded-micon"><i
-                                class="feather icon-file-text"></i></span><span class="pcoded-mtext">Show 
-                            Student</span></a>
-                </li>
-
-
-                
->>>>>>> 9a6870456fc5141d689935d2d1e05af7accff994
                 <li data-username="form elements advance componant validation masking wizard picker select"
                     class="nav-item">
                     <a href="{{url('/addsubject')}}" class="nav-link "><span class="pcoded-micon"><i
@@ -64,7 +44,7 @@
                             Add Mark</span></a>
                 </li>
                 @endcan
-                
+
             </ul>
         </div>
     </div>
