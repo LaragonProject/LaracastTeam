@@ -14,9 +14,15 @@ class HomeController extends Controller
 
     if(Auth::id()){
 
-        if(Auth::user()->user_type == 'Admin' || Auth::user()->user_type == 'Faculty'){
-            return view('admin.adminmain');
-        }else{
+        if(Auth::user()->user_type == 'Admin' ){
+            return view('admin.addfacultyform');
+        }
+        
+        
+        // else if(Auth::user()->user_type == 'Faculty'){
+        //     return view('admin.adminmain');
+        // }
+        else{
 
             return view('user.usermain');
         }

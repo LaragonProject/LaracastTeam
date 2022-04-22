@@ -52,7 +52,7 @@
                                         <div class="card">
 
                                             <div class="card-body">
-                                                <h5>Enter Student Details</h5>
+                                                <h5 style="font-size:30px;">Enter Student Details</h5>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
